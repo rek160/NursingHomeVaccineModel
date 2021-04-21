@@ -637,6 +637,8 @@ covid_death <- function(df,mu,parms,total,t,dt){ # departure and death function
     for (i in 1:nrow(df)){ # loop through each person to see if they die
       if(df$asympt[i]==1){
         mu = parms[["mu.NC"]]
+      } else{
+        mu = parms[["mu.C"]]
       }
       death_stat <- rbinom(1,1,mu) 
       if (death_stat == 1){

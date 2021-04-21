@@ -540,7 +540,7 @@ stochastic_NH <- function(parms, Ns, delta_t, t, num_staff){
         beta.v <- beta*(1-S.hcwC$VE_s[i]) # reduce susceptibility by VEs (assuming leaky here)
 
         exp.prob <- beta.v*ppe*(ifelse(N.hcwC>0,k.HH*(sum(I.hcwC$Infectiousness*(1-I.hcwC$VE_i))+sum(A.hcwC$Infectiousness*(1-A.hcwC$VE_i)))/N.hcwC,0)) +
-          beta.s.v*(ifelse(N.rC>0,k.HR*(sum(I.rC$Infectiousness*(1-I.rC$VE_i)))/N.rNC,0))
+          beta.s.v*ppe*(ifelse(N.rC>0,k.HR*(sum(I.rC$Infectiousness*(1-I.rC$VE_i)))/N.rNC,0))
 
         if (exp.prob >= 1){
           exp.prob <- 1
